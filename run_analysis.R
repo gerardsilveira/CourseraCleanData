@@ -47,8 +47,11 @@ run_analysis <-function(){
   
   #group the data by subject and activity and calculate the average for each column
   tidy_data <- completeData[,-1] %>% group_by(SubjectId,ActivityName) %>% summarise_each(funs(mean))
-  tidy_data <- arrange(tidy_data,SubjectId,ActivityName)
-  write.table(tidy_data,file = "tidy_data.txt",row.names = FALSE)
-  write.csv(tidy_data,file = "tidy_data.csv",row.names = FALSE)
   
+  #arrange the dataset by subject and activity Name 
+  tidy_data <- arrange(tidy_data,SubjectId,ActivityName)
+  
+  #write out the dataset to file
+  write.table(tidy_data,file = "tidy_data.txt",row.names = FALSE)
+
 }
